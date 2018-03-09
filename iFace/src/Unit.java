@@ -46,10 +46,11 @@ public class Unit {
 		
 			while(true){
 				
-				
+				System.out.println("===========");
 				System.out.printf("[1] Requests of friends pending%n[2] Communits on%n[3] Add new friend%n[4] Send mensage%n" +
 						"[5] Information about user%n[6] Edit profile%n[7] Create new Community%n[8] Manage community%n[9] Delete account%n[10] Menssages received%n" +
 						"[11] My communits%n[12] Exit%n");
+				System.out.println("===========");
 				
 				int option = input.nextInt();
 				boolean seachAux;
@@ -159,7 +160,7 @@ public class Unit {
 		
 		User userAux = searchUser();
 		
-		if(user == null)
+		if(userAux == null)
 			return;
 		
 		userAux.addRequest(user);
@@ -192,11 +193,12 @@ public class Unit {
 	
 	private static User searchUser(){
 		
-		System.out.print("Login of user: ");
-		String loginAux = input.next();
+		String loginAux;
 		User user = null;
 	
 		do{
+			System.out.print("Login of user: ");
+			loginAux = input.next();
 			for(User userAux : usersRegisteds)
 				if(userAux.getLogin().equals(loginAux))
 					user = userAux;
