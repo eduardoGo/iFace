@@ -89,6 +89,12 @@ public class User {
 	
 	
 	
+	public ArrayList<User> getFriends() {
+		return friends;
+	}
+
+
+
 	public int getAge() {
 		return age;
 	}

@@ -49,7 +49,7 @@ public class Unit {
 				System.out.println("===========");
 				System.out.printf("[1] Requests of friends pending%n[2] Communits on%n[3] Add new friend%n[4] Send mensage%n" +
 						"[5] Information about user%n[6] Edit profile%n[7] Create new Community%n[8] Manage community%n[9] Delete account%n[10] Menssages received%n" +
-						"[11] My communits%n[12] Exit%n");
+						"[11] My communits%n[12] My friends%n[13] Exit%n");
 				System.out.println("===========");
 				
 				int option = input.nextInt();
@@ -107,6 +107,9 @@ public class Unit {
 						myCommunits(userCurrent);
 						break;
 					case 12:
+						myFriends(userCurrent);
+						break;
+					case 13:
 						return;
 					default:
 						System.out.println("Invalid option!");
@@ -124,6 +127,15 @@ public class Unit {
 			return;
 		
 		userAux.informations();
+		
+	}
+	private static void myFriends(User user){
+		if(user.getFriends().size() == 0){
+			System.out.println("No friends");
+			return;
+		}
+		for(User userAux : user.getFriends())
+			System.out.printf("Name: %s Age: %d%n", userAux.getName(),userAux.getAge());
 		
 	}
 	private static void myCommunits(User user){
