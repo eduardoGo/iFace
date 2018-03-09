@@ -12,14 +12,17 @@ public class Main {
 		
 		while(true){
 			
+			
 			System.out.printf("***iFace***%n[1] Login%n[2] Register");
 			
 			option = input.nextInt();
 			
 			if(option == 1)
 				Unit.login();
-			else
+			else if(option == 2)
 				Unit.register();
+			else
+				System.out.println("Invalid input");
 		}
 		
 		

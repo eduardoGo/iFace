@@ -7,14 +7,14 @@ public class Community {
 	private String name;
 	private User manager;
 	private String description;
-	private ArrayList<User> members = new ArrayList<User>();
+	private static ArrayList<User> members = new ArrayList<User>();
 	private ArrayList<User> requests = new ArrayList<User>();
 	private ArrayList<Menssage> menssagesReceived = new ArrayList<Menssage>();
 	
 	
 	
 	
-	Scanner input = new Scanner(System.in);
+	static Scanner input = new Scanner(System.in);
 	
 	public Community(User manager) {
 		System.out.print("Name: ");
@@ -25,14 +25,14 @@ public class Community {
 		System.out.println("Finish!");
 	}
 	
-	public void manager(){
+	public void manager(Community currentCommunity){
 		
 		
 		System.out.println("***Manager Community***");
 		int option = 0;
 		int contAux = 0;
 		while(true){
-			System.out.printf("[1] Look members%n[2] Look requests%n[3] Menssagens receiveds[4] Back to menu principal%n");
+			System.out.printf("[1] Look members%n[2] Look requests%n[3] Menssagens receiveds%n[4] Delete member %n[5]Back to menu principal%n");
 			option = input.nextInt();
 			contAux = 0;
 			switch(option){
@@ -64,6 +64,9 @@ public class Community {
 					System.out.println("Finish!");
 					break;
 				case 4:
+					deleteUser(currentCommunity);
+					break;
+				case 5:
 					return;
 				default:
 					System.out.println("Invalid option!");
@@ -73,7 +76,34 @@ public class Community {
 		
 	}
 	
-	
+	public static void deleteUser(Community currentCommunity){
+		User userDelete = null;
+		String loginAux;
+		do{
+			System.out.printf("Login of member: ");
+			
+			loginAux = input.next();
+			for(User currentMember : members){
+				if(currentMember.getLogin().equals(loginAux)){
+					userDelete = currentMember;
+					break;
+				}
+			}
+			if(userDelete == null){
+				System.out.printf("User not found%n[1] Try again [2] back to menu%n");
+				if(input.nextInt() == 2)
+					return;
+			}
+				
+			
+		}while(userDelete == null);
+		
+		members.remove(userDelete);
+		userDelete.getCommunits().remove(currentCommunity);
+	}
+	public void deleteUser(User user){
+		
+	}
 	public void addRequest(User userCurrent){
 		this.requests.add(userCurrent);
 	}
@@ -89,9 +119,7 @@ public class Community {
 	public ArrayList<User> getMembers() {
 		return members;
 	}
-	public void setMembers(ArrayList<User> members) {
-		this.members = members;
-	}
+	
 	public User getManager() {
 		return manager;
 	}

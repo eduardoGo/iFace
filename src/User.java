@@ -40,6 +40,12 @@ public class User {
 	
 	public static void requestsPending(User userCurrent){
 		int cont = 1;
+		
+		if(userCurrent.requests.size() == 0){
+			System.out.println("No request");
+			return;
+		}
+			
 		for(User userAux : userCurrent.requests){
 			System.out.printf("[%d] %s%n", cont++,userAux.name);
 			System.out.println("[1] Accept [2] Reject");
@@ -47,11 +53,10 @@ public class User {
 				userCurrent.friends.add(userAux);
 			}
 		}
-		System.out.println("Finish!");
 	}
 	
 	public void informations(){
-		System.out.printf("Name: %s%nEmail: %s%n: Age: %d%n",
+		System.out.printf("Name: %s%nEmail: %s%nAge: %d%n",
 				this.name,this.email,this.age);
 	}
 	
@@ -83,6 +88,24 @@ public class User {
 	}
 	
 	
+	
+	public int getAge() {
+		return age;
+	}
+
+
+
+	public ArrayList<Menssage> getMenssagesReceived() {
+		return menssagesReceived;
+	}
+
+
+
+	public ArrayList<Community> getCommunits() {
+		return communits;
+	}
+
+
 	public String getName() {
 		return name;
 	}
