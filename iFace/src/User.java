@@ -38,7 +38,7 @@ public class User {
 	
 	
 	
-	public static void requestsPending(User userCurrent){
+	public void requestsPending(User userCurrent){
 		int cont = 1;
 		
 		if(userCurrent.requests.size() == 0){

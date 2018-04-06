@@ -14,13 +14,14 @@ public class Main {
 			
 			
 			System.out.printf("***iFace***%n[1] Login%n[2] Register");
+			Unit iface = new Unit();
 			
 			option = input.nextInt();
 			
 			if(option == 1)
-				Unit.login();
+				iface.login();
 			else if(option == 2)
-				Unit.register();
+				iface.register();
 			else
 				System.out.println("Invalid input");
 		}

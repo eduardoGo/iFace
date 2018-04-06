@@ -10,7 +10,7 @@ public class Unit {
 
 	static Scanner input = new Scanner(System.in);
 	
-	public static void login() {
+	public void login() {
 		System.out.print("Login: ");
 		String login = input.next();
 		System.out.print("Password: ");
@@ -37,11 +37,11 @@ public class Unit {
 		
 	}
 	
-	public static void register() {
+	public void register() {
 		usersRegisteds.add(new User());
 	}
 	
-	private static void lobby(User userCurrent){
+	private void lobby(User userCurrent){
 		
 		
 			while(true){
@@ -57,7 +57,7 @@ public class Unit {
 				
 				switch(option){
 					case 1:
-						User.requestsPending(userCurrent);
+						userCurrent.requestsPending(userCurrent);
 						break;
 					case 2:
 						communitsOn(userCurrent);
@@ -120,7 +120,7 @@ public class Unit {
 		}
 		
 
-	private static void informations(){
+	private void informations(){
 		
 		User userAux = searchUser();
 		if(userAux == null)
@@ -129,7 +129,7 @@ public class Unit {
 		userAux.informations();
 		
 	}
-	private static void myFriends(User user){
+	private void myFriends(User user){
 		if(user.getFriends().size() == 0){
 			System.out.println("No friends");
 			return;
@@ -138,7 +138,7 @@ public class Unit {
 			System.out.printf("Name: %s Age: %d%n", userAux.getName(),userAux.getAge());
 		
 	}
-	private static void myCommunits(User user){
+	private void myCommunits(User user){
 		if(user.getCommunits().size() == 0){
 			System.out.println("No communits");
 			return;
@@ -148,7 +148,7 @@ public class Unit {
 			System.out.printf("Name: %s%nDescription: %s%n", currentCommunity.getName(),currentCommunity.getDescription());
 		
 	}
-	private static void menssagesReceived(User user){
+	private void menssagesReceived(User user){
 		if(user.getMenssagesReceived().size() == 0){
 			System.out.println("No menssages");
 			return;
@@ -157,7 +157,7 @@ public class Unit {
 			System.out.printf("[%s] : %s%n",currentMenssage.getUser().getName(),currentMenssage.getMenssage());
 		
 	}
-	private static void sendMenssage(User user){
+	private void sendMenssage(User user){
 		
 		User userAux = searchUser();
 		if(userAux == null)
@@ -167,7 +167,7 @@ public class Unit {
 	
 		System.out.println("Menssage send!");
 	}
-	private static void addNewFriend(User user){
+	private void addNewFriend(User user){
 		
 		
 		User userAux = searchUser();
@@ -180,7 +180,7 @@ public class Unit {
 		
 			System.out.println("Request send!");
 	}
-	private static void communitsOn(User user){
+	private void communitsOn(User user){
 		int option = 1;
 		if(communitsRegisteds.size() == 0){
 			System.out.println("No communits");
@@ -203,7 +203,7 @@ public class Unit {
 		
 	}
 	
-	private static User searchUser(){
+	private User searchUser(){
 		
 		String loginAux;
 		User user = null;
